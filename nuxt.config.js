@@ -13,6 +13,9 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      { hid: 'stripe', src: 'https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.min.js' , mode: 'client'  }
     ]
   },
 
