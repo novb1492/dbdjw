@@ -15,7 +15,8 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
     script: [
-      { hid: 'stripe', src: 'https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.min.js' , mode: 'client'  }
+      { hid: 'stripe', src: 'https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.min.js' , mode: 'client'  },
+      { hid: 'stripe', src: 'https://cdnjs.cloudflare.com/ajax/libs/ckeditor5/34.2.0/ckeditor.min.js', defer: true }
     ]
   },
 
@@ -37,6 +38,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    ['@nuxtjs/dotenv',{filename: `.env.${process.env.NODE_ENV}`}]
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

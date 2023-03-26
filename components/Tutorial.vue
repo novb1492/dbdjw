@@ -4,16 +4,16 @@
 </template>
 
 <script>
-import j from '../static/animation/an/sheeppos.json';
-import Sprite from '../static/animation/sprite.js';
-import Point from '../static/animation/point.js';
-import Hill from '../static/animation/hill.js';
-import Cloud from '../static/animation/cloud.js';
-import Star from '../static/animation/star.js';
-import Sky from '../static/animation/sky.js';
-import Sun from '../static/animation/sun.js';
-import Moon from '../static/animation/moon.js';
-import { twodmakearray } from '../static/jsLib';
+import j from '../assets/animation/an/sheeppos.json';
+import Sprite from '../assets/animation/sprite.js';
+import Point from '../assets/animation/point.js';
+import Hill from '../assets/animation/hill.js';
+import Cloud from '../assets/animation/cloud.js';
+import Star from '../assets/animation/star.js';
+import Sky from '../assets/animation/sky.js';
+import Sun from '../assets/animation/sun.js';
+import Moon from '../assets/animation/moon.js';
+import { twodmakearray } from '../assets/jsLib';
 export default {
   name: 'NuxtTutorial',
   data() {
