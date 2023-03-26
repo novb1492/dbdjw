@@ -1,19 +1,6 @@
 <!-- Please remove this file from your project -->
 <template>
-  <div>
-  <!-- <script src="animation/check.js"></script>
-    <script src="animation/cloud.js"></script>
-    <script src="animation/hill.js"></script>
-    <script src="animation/moon.js"></script>
-    <script src="animation/point.js"></script>
-    <script src="animation/sky.js"></script>
-    <script src="animation/sprite.js"></script>
-    <script src="animation/star.js"></script>
-    <script src="animation/sun.js"></script>
-    <script src="animation/p5.js"></script>
-                                                            <div id="canvas"></div> -->
     <div id="p5Canvas"></div>
-  </div>
 </template>
 
 <script>

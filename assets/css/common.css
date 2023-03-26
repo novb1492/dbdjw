@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Caramel&family=Great+Vibes&family=Mr+Dafoe&family=Passions+Conflict&display=swap');
+body{
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    color: pink;
+}
+h2{
+    margin: 0;
+}
+ul{
+    list-style:none;
+    padding-left: 0;
+}
+:root {
+    --nav-height:20vh;
+
+}
+.main{
+    width: 100%;
+    height: 100vh;
+    background-image: url("https://eleven-fifty.s3.ap-northeast-2.amazonaws.com/main_img.jpg");
+    background-size: 100% 100vh;
+    animation: fadeInUp 5s;
+}
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: rgba( 255, 255, 255, 0 );
+}
+.nav_ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.nav_ul_ul{
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav_h_l_t{
+    color:pink;
+    font-family: 'Caramel', cursive;
+    font-size: 4rem; 
+}
+.nav_h_t{
+    color:pink;
+    font-family: 'Caramel', cursive;
+    font-size: 2rem; 
+}
+.black_n{
+    background-color: black;
+}
