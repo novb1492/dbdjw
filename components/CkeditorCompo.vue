@@ -6,8 +6,9 @@
 <script>
 import MyUploadAdapter from "../assets/MyUploadAdapter.js";
 import { markRaw } from 'vue';
+import { checkNullAndUnde } from '../assets/jsLib.js';
 export default {
-    props: ['text','ph'],
+    props: ['text', 'ph'],
     data() {
         return {
             editor: null
@@ -26,10 +27,11 @@ export default {
                 })
                 .then(newEditor => {
                     this.editor = markRaw(newEditor);
-                    this.editor.setData(this.text);
+                    if (!checkNullAndUnde(this.text)) {
+                        this.editor.setData(this.text);
+                    }
                     this.MyCustomUploadAdapterPlugin();
                     // this.editor.enableReadOnlyMode( 'test2');
-
                 })
                 .catch(error => {
                     console.log(error);
@@ -40,6 +42,9 @@ export default {
             this.editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
                 return new MyUploadAdapter(loader);
             };
+        },
+        getText() {
+            return { text: this.editor.getData() };
         }
     },
 }
