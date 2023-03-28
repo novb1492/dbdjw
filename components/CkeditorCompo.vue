@@ -44,7 +44,7 @@ export default {
             };
         },
         getText() {
-            return { text: this.editor.getData() };
+            return this.editor.getData();
         }
     },
 }

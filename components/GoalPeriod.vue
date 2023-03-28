@@ -41,7 +41,7 @@ export default {
                 this.ed = this.oed;
             }
         },
-        getPeriod() {
+        getData() {
             return { sd: this.sd, ed: this.ed };
         }
     },

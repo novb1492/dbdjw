@@ -1,11 +1,11 @@
 <template lang="">
     <div>
-        <button @click=click()>{{text}}</button>
+        <button type="button" class="btn" :class="btnclazz" @click=click()>{{text}}</button>
     </div>
 </template>
 <script>
 export default {
-    props: ['text'],
+    props: ['text','btnclazz'],
     methods: {
         click(){
             this.$emit("click_action", null);

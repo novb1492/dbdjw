@@ -18,3 +18,13 @@ export function checkNullAndUnde(value) {
   }
   return false;
 }
+export async function initKakaoLogin() {
+  try {
+     await window.Kakao.init('ec6b5c5e681c307d9d1576ee7fbf2edf');
+  } catch (error) {
+      consoleLog(error);
+  }
+}
+export function consoleLog(val) {
+  console.log(val);
+}
