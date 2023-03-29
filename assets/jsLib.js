@@ -20,11 +20,16 @@ export function checkNullAndUnde(value) {
 }
 export async function initKakaoLogin() {
   try {
-     await window.Kakao.init('ec6b5c5e681c307d9d1576ee7fbf2edf');
+    await window.Kakao.init('ec6b5c5e681c307d9d1576ee7fbf2edf');
   } catch (error) {
       consoleLog(error);
   }
 }
 export function consoleLog(val) {
   console.log(val);
+}
+export function loginWithKakao() {
+  window.Kakao.Auth.authorize({
+      redirectUri: 'http://localhost:3000/login',
+  });
 }
