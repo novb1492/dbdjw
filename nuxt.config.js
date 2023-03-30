@@ -45,7 +45,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    ['@nuxtjs/dotenv', { filename: `.env.${process.env.NODE_ENV}` }]
+    ['@nuxtjs/dotenv', { filename: `.env.${process.env.NODE_ENV}` }],'@nuxtjs/axios'
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

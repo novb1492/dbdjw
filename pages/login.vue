@@ -4,7 +4,8 @@
     </div>
 </template>
 <script>
-import { checkNullAndUnde, consoleLog, initKakaoLogin, loginWithKakao } from '../assets/jsLib'
+import { kLogin } from '../api/userApi';
+import { checkNullAndUnde, consoleLog, initKakaoLogin, is200, loginWithKakao } from '../assets/jsLib'
 export default {
     data() {
         return {
@@ -24,6 +25,11 @@ export default {
         async loginPro() {
             let code = this.$route.query.code;
             try {
+                let response=await kLogin(code);
+                is200(response);
+                // if(response.status!==200){
+                //     throw new Error;
+                // }
                 let nurl = this.$route.query.nurl;
                 localStorage.setItem('login', true);
                 if (checkNullAndUnde(nurl)) {
@@ -33,6 +39,9 @@ export default {
             } catch (error) {
                 consoleLog(error);
             }
+        },
+        errorF(response){
+            consoleLog(response);
         }
     },
 }

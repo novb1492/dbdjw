@@ -33,3 +33,8 @@ export function loginWithKakao() {
       redirectUri: 'http://localhost:3000/login',
   });
 }
+export function is200(response){
+  if(response.status!==200){
+    throw new Error;
+  }
+}
