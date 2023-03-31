@@ -1,6 +1,8 @@
-import { initKakaoLogin } from "../assets/jsLib";
+import { checkNullAndUnde, consoleLog, initKakaoLogin } from "../assets/jsLib";
 
 // middleware/authenticated.js
-export default function ({ store, redirect,route }) {
-  console.log(route.fullPath)
+export default function ({store, route,redirect }) {
+  if (!store.state.auth.flag) {
+    return redirect(`/login?nurl=${route.fullPath}`);
+  }
 }
