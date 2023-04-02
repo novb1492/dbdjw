@@ -25,17 +25,19 @@ export default {
         async loginPro() {
             let code = this.$route.query.code;
             try {
-                let response=await kLogin(code);
-                is200(response);
+                // let response=await kLogin(code);
+                // is200(response);
                 // if(response.status!==200){
                 //     throw new Error;
                 // }
-                let nurl = this.$route.query.nurl;
+                let nurl = localStorage.getItem('nurl');
                 localStorage.setItem('login', true);
                 if (checkNullAndUnde(nurl)) {
                     nurl="/";
+                }else{
+                    localStorage.removeItem('nurl');
                 }
-                window.location.href=nurl;
+                location.href=nurl;
             } catch (error) {
                 consoleLog(error);
             }

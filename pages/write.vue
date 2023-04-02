@@ -15,7 +15,6 @@ import TitleCompoVue from '../components/TitleCompo.vue';
 import WriteBtn from '../components/WriteBtn.vue';
 export default {
   components: { CkeditorCompo, WriteBtn, GoalPeriodVue,TitleCompoVue},
-  middleware: 'authenticated',
   methods: {
     async clickAction() {
       let text=this.$refs.editor.getText();
