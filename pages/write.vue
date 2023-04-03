@@ -1,9 +1,13 @@
 <template lang="">
-    <div> 
+    <div class="wirte_container"> 
+      <div class="w_row">
         <TitleCompoVue ref="title" />
         <CkeditorCompo ph="당신의 함께 뛸 친구에게 말해주세요" ref="editor"/>
-        <GoalPeriodVue ref="period" />
-        <WriteBtn btnclazz="btn-outline-success" text="등록" v-on:click_action="clickAction" style="margin-left:1000   px"/>
+      </div>
+        <div class="p_row">
+          <GoalPeriodVue ref="period" />
+          <WriteBtn btnclazz="btn-outline-success" text="등록" v-on:click_action="clickAction" class="w_b"/>
+        </div>
     </div>
 </template>
 <script>

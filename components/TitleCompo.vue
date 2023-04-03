@@ -1,10 +1,11 @@
 <template lang="">
-    <div>
-        <h3>짧은 제목</h3>
-        <div>
-            <input type="text" v-model=title>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Title</span>
         </div>
+        <input type="text" class="form-control" v-model=title aria-label="Default" aria-describedby="inputGroup-sizing-default">
     </div>
+            
 </template>
 <script>
 import { checkNullAndUnde } from '../assets/jsLib'
@@ -12,19 +13,19 @@ export default {
     props: ['otitle'],
     data() {
         return {
-            title:null
+            title: null
         }
     },
     mounted() {
-       this.setTitle();  
+        this.setTitle();
     },
     methods: {
-        setTitle(){
-            if(checkNullAndUnde(this.otitle)){
-                this.title=this.otitle;
+        setTitle() {
+            if (checkNullAndUnde(this.otitle)) {
+                this.title = this.otitle;
             }
         },
-        getData(){
+        getData() {
             return this.title;
         }
     },

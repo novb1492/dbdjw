@@ -1,6 +1,6 @@
 <template lang="">
     <div>
-        <p>{{text}}</p>
+        <p class="center">{{text}}</p>
     </div>
 </template>
 <script>

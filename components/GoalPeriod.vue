@@ -1,12 +1,12 @@
 <template lang="">
     <div>
-        <p>같이 달릴 기간</p>
+        <h3>같이 달릴 기간</h3>
         <div>
-            <div>
+            <div class="p_c_row">
                 <p>START</p>
                 <input type="date" v-model=sd />
             </div>
-            <div>
+            <div class="p_c_row">
                 <p>FINSH</p>
                 <input type="date" v-model=sd />
             </div>
@@ -17,7 +17,7 @@
 import { checkNullAndUnde, getTodayDate } from '../assets/jsLib';
 export default {
     props: ['osd', 'oed'],
-
+    components: { TimeInput},
     data() {
         return {
             sd: null,
