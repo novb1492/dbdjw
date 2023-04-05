@@ -4,8 +4,7 @@ export default class MyUploadAdapter {
         // CKEditor 5's FileLoader instance.
         this.loader = props;
         // URL where to send files.
-        this.url = process.env.VUE_APP_API_URL+'/file/upload';
-        console.log(process.env.API_URL);
+        this.url = process.env.API_URL+'/api/file/upload';
         // this.data=JSON.parse(localStorage.getItem('authentication'));
     }
 
@@ -75,7 +74,7 @@ export default class MyUploadAdapter {
             // If the upload is successful, resolve the upload promise with an object containing
             // at least the "default" URL, pointing to the image on the server.
             resolve({
-                default: response.message[0]
+                default: response.url[0]
             });
         });
 

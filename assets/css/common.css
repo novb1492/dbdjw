@@ -78,7 +78,7 @@ ul{
 .p_c_row{
     display: flex;
     flex-direction: column;
-    height: 20vh;
+    height: 15vh;
     justify-content: space-around;
 }
 .w_b{

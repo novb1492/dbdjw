@@ -1,23 +1,29 @@
 <template lang="">
     <div>
-        <h3>같이 달릴 기간</h3>
+        <h3>하루 요약</h3>
         <div>
             <div class="p_c_row">
-                <p>START</p>
-                <input type="date" v-model=sd />
+                <p>기상시간</p>
+                <TimeInput ref="wt"/>
             </div>
             <div class="p_c_row">
-                <p>FINSH</p>
-                <input type="date" v-model=sd />
+                <p>오늘 운동시간(분)</p>
+                <WorkOut ref="et"/>
+            </div>
+            <div class="p_c_row">
+                <p>취침시간</p>
+                <TimeInput ref="st"/>
             </div>
         </div>
     </div>
 </template>
 <script>
 import { checkNullAndUnde, getTodayDate } from '../assets/jsLib';
+import TimeInput from './TimeInput.vue';
+import WorkOut from './WorkOut.vue';
 export default {
     props: ['osd', 'oed'],
-    components: { TimeInput},
+    components: { TimeInput,WorkOut },
     data() {
         return {
             sd: null,
@@ -42,7 +48,7 @@ export default {
             }
         },
         getData() {
-            return { sd: this.sd, ed: this.ed };
+            return { wt: this.$refs.wt.getData(), st: this.$refs.st.getData(),et:this.$refs.et.getData() };
         }
     },
 }

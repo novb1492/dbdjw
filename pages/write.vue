@@ -26,9 +26,10 @@ export default {
       let title=this.$refs.title.getData();
       let data=JSON.stringify({
         "text":text,
-        "sd":period.sd,
-        "ed":period.ed,
-        "title":title
+        "wt":period.wt,
+        "st":period.st,
+        "title":title,
+        "et":period.et
       });
       console.log(data);
       try {
