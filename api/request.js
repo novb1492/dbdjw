@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { consoleLog } from '../assets/jsLib';
 
 export  function setInterceptors(instance)  {
     instance.interceptors.request.use(
@@ -13,10 +14,11 @@ export  function setInterceptors(instance)  {
     // Add a response interceptor
      instance.interceptors.response.use(
       (response) => {
+        consoleLog(response);
         return response;
       },
       (error) => {
-        console.log(error);
+        consoleLog(error);
         return Promise.reject(error);
       },
     );

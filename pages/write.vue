@@ -12,7 +12,7 @@
 </template>
 <script>
 import { insertRequest } from '../api/articleApi';
-import { consoleLog, is200 } from '../assets/jsLib';
+import { articleError400, articleError400Me, checkNullAndUnde, consoleLog, is200 } from '../assets/jsLib';
 import CkeditorCompo from '../components/CkeditorCompo.vue';
 import GoalPeriodVue from '../components/GoalPeriod.vue';
 import TitleCompoVue from '../components/TitleCompo.vue';
@@ -31,17 +31,24 @@ export default {
         "title":title,
         "et":period.et
       });
-      console.log(data);
+      consoleLog(data);
       try {
-        let response= await insertRequest(data);
-        is200(response);
-
+        let response= await insertRequest(data);        
+        is200(response,this.insertDoneF);
       } catch (error) {
-        consoleLog(error);
+        this.insertErrorF(error.response);
       }
     },
+    insertDoneF(r){
+      alert('작성되었습니다');
+      this.$router.push('/write/list?p=1');
+    },
     insertErrorF(r){
-      consoleLog('fdfs');
+      if(r.status===400){
+        articleError400(r);
+      }else{
+        alert("알 수 없는 에러 발생");
+      }
     }
   },
 }

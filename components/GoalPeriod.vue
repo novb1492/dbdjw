@@ -6,10 +6,10 @@
                 <p>기상시간</p>
                 <TimeInput ref="wt"/>
             </div>
-            <div class="p_c_row">
+            <!-- <div class="p_c_row">
                 <p>오늘 운동시간(분)</p>
                 <WorkOut ref="et"/>
-            </div>
+            </div> -->
             <div class="p_c_row">
                 <p>취침시간</p>
                 <TimeInput ref="st"/>
@@ -48,7 +48,7 @@ export default {
             }
         },
         getData() {
-            return { wt: this.$refs.wt.getData(), st: this.$refs.st.getData(),et:this.$refs.et.getData() };
+            return { wt: this.$refs.wt.getData(), st: this.$refs.st.getData() };
         }
     },
 }
