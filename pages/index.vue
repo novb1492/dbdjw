@@ -19,7 +19,7 @@
 <script>
 import Swiper from 'swiper/swiper-bundle.min';
 import 'swiper/swiper-bundle.min.css';
-import write from './write.vue';
+import write from './write/index.vue';
 export default {
   name: 'IndexPage',
   asyncData({ isDev, route, store, env, params, query, req, res, redirect, error }) {

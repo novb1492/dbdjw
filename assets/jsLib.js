@@ -1,3 +1,5 @@
+import { getNewToken } from "../api/userApi";
+
 export function twodmakearray(row, colums) {
   let array = new Array(row);
   for (let i = 0; i < array.length; i++) {
@@ -60,4 +62,19 @@ export function articleError400Me(num) {
   } else if (num == "5") {
     return "제목은 최대 30글자 입니다";
   }
+}
+export async function getReToken(router,route) {
+  try {
+    await getNewToken();
+    return true;
+  } catch (error) {
+    error403(router,route);
+    return false;
+  }
+}
+export function error403(router,route) {
+  let path=route.fullPath;
+  localStorage.setItem("nurl",path);
+  alert("로그인이 만료되었습니다");
+  router.push('/login');
 }
