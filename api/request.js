@@ -14,11 +14,11 @@ export  function setInterceptors(instance)  {
     // Add a response interceptor
      instance.interceptors.response.use(
       (response) => {
-        consoleLog(response);
+        // consoleLog(response);
         return response;
       },
       (error) => {
-        consoleLog(error);
+        // consoleLog(error);
         return Promise.reject(error);
       },
     );

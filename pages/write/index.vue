@@ -19,6 +19,11 @@ import TitleCompoVue from '../../components/TitleCompo.vue';
 import WriteBtn from '../../components/WriteBtn.vue';
 export default {
   components: { CkeditorCompo, WriteBtn, GoalPeriodVue, TitleCompoVue },
+  data() {
+    return {
+      retryCount: 0
+    }
+  },
   methods: {
     async clickAction() {
       let text = this.$refs.editor.getText();
@@ -31,22 +36,26 @@ export default {
         "title": title,
         "et": period.et
       });
+      this.requestWithRetry(data);
+    },
+    async requestWithRetry(data) {
       try {
-        let response = await insertRequest(data);
-        is200(response, this.insertDoneF);
+        const response = await insertRequest(data);
+        this.insertDoneF(response);
       } catch (error) {
-        if (error.response.status === 401) {
-          if (getReToken(this.$router, this.$route)) {
-            try {
-              let response = await insertRequest(data);
-              is200(response, this.insertDoneF);
-            } catch (error) {
-              this.insertErrorF(error.response);
-            }
+        const { status } = error.response;
+        if (status === 401) {
+          if (this.retryCount < 1) {
+            await getReToken(); // 엑세스 토큰 재발급
+            return this.requestWithRetry(data); // 재발급 후 다시 요청
           }
-        }else{
+          error403(this.$router, this.$route);
+        } else if (status === 403) {
+          error403(this.$router, this.$route);
+        } else {
           this.insertErrorF(error.response);
         }
+
       }
     },
     insertDoneF(r) {
