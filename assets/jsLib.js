@@ -35,6 +35,11 @@ export function loginWithKakao() {
     redirectUri: 'http://localhost:3000/login',
   });
 }
+export function is200(response, doneF) {
+  if (response.status === 200) {
+    doneF(response);
+  }
+}
 export function articleError400(r) {
   let data = r.data.message;
   if (!checkNullAndUnde(data.length)) {
