@@ -63,18 +63,28 @@ export function articleError400Me(num) {
     return "제목은 최대 30글자 입니다";
   }
 }
-export async function getReToken(router,route) {
+export async function getReToken() {
   try {
     await getNewToken();
     return true;
   } catch (error) {
-    error403(router,route);
+    consoleLog('토큰재발급 실패');
     return false;
   }
 }
-export function error403(router,route) {
-  let path=route.fullPath;
-  localStorage.setItem("nurl",path);
+export function error403() {
+  const url = window.location.href;
+  const path = url.split('/')[3];
+  localStorage.setItem("nurl", path);
   alert("로그인이 만료되었습니다");
-  router.push('/login');
+  window.location.href='/login';
+}
+export async function getReTokenAsyncDate(axios) {
+  try {
+    await axios.post(`${process.env.API_URL}/api/auth`, null, { widthcrendetail: true });
+    return true;
+  } catch (error) {
+    consoleLog('')
+    return false;
+  }
 }
