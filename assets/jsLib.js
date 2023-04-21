@@ -81,10 +81,10 @@ export function error403() {
 }
 export async function getReTokenAsyncDate(axios) {
   try {
-    await axios.post(`${process.env.API_URL}/api/auth`, null, { widthcrendetail: true });
+    await axios.post(`${process.env.API_URL}/api/auth`, null, { withCredentials: true }); // 오타 수정
     return true;
   } catch (error) {
-    consoleLog('')
+    console.log('토큰재발급 실패'); // console.log 수정
     return false;
   }
 }
