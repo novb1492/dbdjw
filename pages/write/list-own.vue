@@ -1,28 +1,47 @@
 <template lang="">
     <div>
-        fdfdf
+        
+
+        {{infoList}}
     </div>
 </template>
 <script>
-
+import { mapGetters,mapMutations } from 'vuex';
 import { listOwnRequest } from '../../api/articleApi';
 import { instance, setInterceptors } from '../../api/request';
-import { error403, ffsfs, getReToken, getReTokenAsyncDate } from '../../assets/jsLib';
+import { checkNullAndUnde, error403, ffsfs, getReToken, getReTokenAsyncDate } from '../../assets/jsLib';
+import ListCompoVue from '../../components/list/ListCompo.vue';
 export default {
     data() {
         return {
-            retryCount: 0
+            retryCount: 0,
         }
     },
-    async mounted() {
-        this.requestWithRetry({page:this.$route.query.page,pageSize:this.$route.query.pageSize,title:this.$route.query.title,text:this.$route.query.text});
+    mounted() {
+        this.requestWithRetry({page:this.getPage(this.$route.query.page),pageSize:this.getPage(this.$route.query.pageSize),title:this.$route.query.title,text:this.$route.query.text});
+    },
+    watch: {
+        "$route"() {
+            this.requestWithRetry({page:this.getPage(this.$route.query.page),pageSize:this.getPage(this.$route.query.pageSize),title:this.$route.query.title,text:this.$route.query.text});
+        }
+    },
+    computed: {
+        ...mapGetters("paging", {
+            infoList: "getInfoList",
+            last: "getLast",
+            first: "getFirst",
+            nowPage: "getNowPage",
+            totalPage: "getTotalPage"
+        })
     },
     methods: {
+        ...mapMutations("paging", {
+            changePaginList: "changePaginList",
+        }),
         async requestWithRetry(data) {
             try {
                 const response = await listOwnRequest(data);
-                console.log(response);
-                // this.insertDoneF(response);
+                this.changePaginList(response.data);
             } catch (error) {
                 const { status } = error.response;
                 if (status === 401) {
@@ -36,10 +55,16 @@ export default {
                 } else if (status === 403) {//재발급실패
                     error403();
                 } else {
-                    error403();
+                    // error403();
                 }
             }
         },
+        getPage(num){
+            if(checkNullAndUnde(num)){
+                return 1;
+            }
+            return num;
+        }
     }
 }
 </script>
