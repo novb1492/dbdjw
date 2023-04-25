@@ -9,12 +9,12 @@ import { checkNullAndUnde, consoleLog, initKakaoLogin, is200, loginWithKakao } f
 export default {
     data() {
         return {
-            text:"로그인 페이지를 불러오는중입니다"
+            text: "로그인 페이지를 불러오는중입니다"
         }
     },
     mounted() {
         if (!checkNullAndUnde(this.$route.query.code)) {
-            this.text="로그인을 처리중입니다";
+            this.text = "로그인을 처리중입니다";
             this.loginPro();
         } else {
             initKakaoLogin();
@@ -25,25 +25,27 @@ export default {
         async loginPro() {
             let code = this.$route.query.code;
             try {
-                // let response=await kLogin(code);
-                // is200(response);
-                // if(response.status!==200){
-                //     throw new Error;
-                // }
-                let nurl = localStorage.getItem('nurl');
-                localStorage.setItem('login', true);
-                if (checkNullAndUnde(nurl)) {
-                    nurl="/";
-                }else{
-                    localStorage.removeItem('nurl');
+                let response = await kLogin(code);
+                is200(response,this.doneF);
+                if (response.status !== 200) {
+                    throw new Error;
                 }
-                location.href=nurl;
             } catch (error) {
                 consoleLog(error);
             }
         },
-        errorF(response){
+        errorF(response) {
             consoleLog(response);
+        },
+        doneF(r) {
+            let nurl = localStorage.getItem('nurl');
+            localStorage.setItem('login', true);
+            if (checkNullAndUnde(nurl)) {
+                nurl = "/";
+            } else {
+                localStorage.removeItem('nurl');
+            }
+            location.href = nurl;
         }
     },
 }

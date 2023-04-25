@@ -1,7 +1,7 @@
 <template lang="">
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-default">Title</span>
+            <span class="input-group-text" id="inputGroup-sizing-default">오늘 나는</span>
         </div>
         <input type="text" class="form-control" v-model=title aria-label="Default" aria-describedby="inputGroup-sizing-default">
     </div>
