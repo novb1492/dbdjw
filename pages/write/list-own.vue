@@ -1,6 +1,6 @@
 <template lang="">
     <div>
-        
+        <PagingBtnVue/>
 
         {{infoList}}
     </div>
@@ -11,7 +11,9 @@ import { listOwnRequest } from '../../api/articleApi';
 import { instance, setInterceptors } from '../../api/request';
 import { checkNullAndUnde, error403, ffsfs, getReToken, getReTokenAsyncDate } from '../../assets/jsLib';
 import ListCompoVue from '../../components/list/ListCompo.vue';
+import PagingBtnVue from '../../components/list/PagingBtn.vue';
 export default {
+    components:{PagingBtnVue},
     data() {
         return {
             retryCount: 0,
